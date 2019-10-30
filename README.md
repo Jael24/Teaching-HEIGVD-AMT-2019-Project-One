@@ -1,4 +1,22 @@
 # Teaching-HEIGVD-AMT-2019-Project-One
+
+## Setup for development
+
+- Make sure you have `git` installed.
+- Clone the repo on your local machine.
+
+### Using Docker
+
+- Make sure you have `docker` and `docker-compose` installed.
+- Position yourself in the `docker/topologies/amt-project-one` folder.
+
+```
+# Build the different images and launch the containers
+# Add -d flag to launch them in the background
+docker-compose -f docker-compose.yml up --build
+```
+
+
 ## Objectives
 
 The main objective of this project is to apply the patterns and techniques presented during the lectures, and to create a simple multi-tiered application in Java EE.
