@@ -1,5 +1,8 @@
 package ch.heigvd.amt.projectone.model;
 
+import lombok.Getter;
+
+@Getter
 public class Character {
     private long idActor;
     private long idMovie;
