@@ -14,7 +14,7 @@ class ActorTest {
 
     @Test
     public void itShouldBePossibleToBuildAnActor() {
-        Actor leonardoDiCaprio = new Actor.builder().firstName("Leonardo").lastName("Di Caprio").build();
+        Actor leonardoDiCaprio = new Actor()
 
         assertEquals("Leonardo", leonardoDiCaprio.getFirstName());
         assertEquals("Di Caprio", leonardoDiCaprio.getLastName());

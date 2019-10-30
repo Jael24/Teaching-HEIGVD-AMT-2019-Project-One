@@ -1,19 +1,12 @@
 package ch.heigvd.amt.projectone.model;
 
+import lombok.Getter;
+
+@Getter
 public class Character {
-    private long idActor;
-    private long idMovie;
     private String name;
+    private long pID;
+    private long 
 
-    public long getIdActor() {
-        return idActor;
-    }
-
-    public long getIdMovie() {
-        return idMovie;
-    }
-
-    public String getName() {
-        return name;
-    }
+    public Character()
 }

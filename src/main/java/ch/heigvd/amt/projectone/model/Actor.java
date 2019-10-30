@@ -1,15 +1,14 @@
 package ch.heigvd.amt.projectone.model;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-@Builder(toBuilder = true)
-@EqualsAndHashCode
 @Getter
 public class Actor {
+    private String fullname;
+    private long pID;
 
-    private long id;
-    private String firstName;
-    private String lastName;
+    public Actor(long pID, String fullname) {
+        this.fullname = fullname;
+        this.pID = pID;
+    }
 }
