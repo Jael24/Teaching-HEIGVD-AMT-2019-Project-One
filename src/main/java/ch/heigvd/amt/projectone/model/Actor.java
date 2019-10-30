@@ -4,11 +4,12 @@ import lombok.Getter;
 
 @Getter
 public class Actor {
+    private long idActor;
     private String fullname;
-    private long actorId;   
 
-    public Actor(long actorId, String fullname) {
+    public Actor(long idActor, String fullname){
+        this.idActor = idActor;
         this.fullname = fullname;
-        this.actorId = actorId;
+
     }
 }
