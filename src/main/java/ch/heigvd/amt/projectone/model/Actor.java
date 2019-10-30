@@ -9,7 +9,11 @@ import lombok.Getter;
 @Getter
 public class Actor {
 
-    private long id;
-    private String firstName;
-    private String lastName;
+    private long idActor;
+    private String fullname;
+
+    public Actor(long idActor, String fullname){
+        this.idActor = idActor;
+        this.fullname = fullname;
+    }
 }

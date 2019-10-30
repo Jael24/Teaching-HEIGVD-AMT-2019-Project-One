@@ -1,4 +1,4 @@
-package Model;
+package ch.heigvd.amt.projectone.model;
 
 import java.util.HashMap;
 

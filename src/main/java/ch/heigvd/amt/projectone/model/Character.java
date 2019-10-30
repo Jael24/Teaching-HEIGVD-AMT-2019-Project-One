@@ -3,7 +3,13 @@ package ch.heigvd.amt.projectone.model;
 public class Character {
     private long idActor;
     private long idMovie;
-    private String name;
+    private String charName;
+
+    public Character(long idActor, long idMovie, String charName){
+            this.idActor = idActor;
+            this.idMovie = idMovie;
+            this.charName = charName;
+    }
 
     public long getIdActor() {
         return idActor;
@@ -14,6 +20,6 @@ public class Character {
     }
 
     public String getName() {
-        return name;
+        return charName;
     }
 }
