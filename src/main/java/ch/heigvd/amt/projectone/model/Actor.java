@@ -5,10 +5,10 @@ import lombok.Getter;
 @Getter
 public class Actor {
     private String fullname;
-    private long pID;
+    private long actorId;   
 
-    public Actor(long pID, String fullname) {
+    public Actor(long actorId, String fullname) {
         this.fullname = fullname;
-        this.pID = pID;
+        this.actorId = actorId;
     }
 }

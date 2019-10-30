@@ -4,6 +4,11 @@ import lombok.Getter;
 
 @Getter
 public class Clip {
-    private int clipID;
+    private long clipId;
     private String title;
+
+    public Clip(long clipId, String title) {
+        this.clipId = clipId;
+        this.title = title;
+    }
 }
