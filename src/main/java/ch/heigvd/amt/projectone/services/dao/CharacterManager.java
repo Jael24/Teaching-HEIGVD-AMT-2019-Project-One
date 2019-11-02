@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterManager implements CharacterManagerLocal{
-    @Resource(lookup = "jdbc/sakila")
+    @Resource(lookup = "jdbc/cinema")
     private DataSource dataSource;
 
     public List<Character> findAllCharacters(){

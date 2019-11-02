@@ -14,7 +14,7 @@ import java.util.List;
 
 
 public class ActorManager implements ActorManagerLocal {
-    @Resource(lookup = "jdbc/sakila")
+    @Resource(lookup = "jdbc/cinema")
             private DataSource dataSource;
 
     public List<Actor> findAllActors(){
