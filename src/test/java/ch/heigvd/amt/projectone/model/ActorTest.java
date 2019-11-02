@@ -15,7 +15,7 @@ class ActorTest {
     @Test
     public void actorShouldBeAbleToHaveAName() {
         Actor diCaprio = new Actor(0, "Leonardo Di Caprio");
-        assertEquals("Leonardo Di Caprio", diCaprio.getFullname());
+        assertEquals("Leonardo Di Caprio", diCaprio.getFullName());
     }
 
 }

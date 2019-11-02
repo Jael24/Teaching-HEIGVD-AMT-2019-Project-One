@@ -11,11 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class ActorManager implements ActorManagerLocal {
     @Resource(lookup = "jdbc/cinema")
-            private DataSource dataSource;
+    DataSource dataSource;
 
     public List<Actor> findAllActors(){
         List<Actor> actors = new ArrayList<>();
