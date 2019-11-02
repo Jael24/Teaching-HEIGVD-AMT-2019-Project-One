@@ -9,33 +9,32 @@ USE `cinema` ;
 
 DROP TABLE IF EXISTS `actor`;
 CREATE TABLE IF NOT EXISTS `actor` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `firstName` VARCHAR(100) NULL,
-  `lastName` VARCHAR(100) NULL,
-  PRIMARY KEY (`id`))
+  `idActor` INT NOT NULL AUTO_INCREMENT,
+  `fullname` VARCHAR(200) NULL,
+  PRIMARY KEY (`idActor`))
 ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `movie`;
 CREATE TABLE IF NOT EXISTS `movie` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `idMovie` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(250) NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`idMovie`))
 ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `character`;
 CREATE TABLE IF NOT EXISTS `character` (
-  `actor_id` INT NOT NULL,
-  `movie_id` INT NOT NULL,
-  `completeName` VARCHAR(45) NULL,
-  PRIMARY KEY (`actor_id`, `movie_id`),
+  `idActor` INT NOT NULL,
+  `idMovie` INT NOT NULL,
+  `charName` VARCHAR(45) NULL,
+  PRIMARY KEY (`idActor`, `idMovie`),
   CONSTRAINT `fk_Character_Actor`
-    FOREIGN KEY (`actor_id`)
-    REFERENCES `actor` (`id`)
+    FOREIGN KEY (`idActor`)
+    REFERENCES `actor` (`idActor`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Character_Movie1`
-    FOREIGN KEY (`movie_id`)
-    REFERENCES `movie` (`id`)
+    FOREIGN KEY (`idMovie`)
+    REFERENCES `movie` (`idMovie`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

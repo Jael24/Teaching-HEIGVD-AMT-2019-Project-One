@@ -33,7 +33,7 @@ public class ActorManager implements ActorManagerLocal {
     public void createActor(String fullname){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO actor(FullName) VALUES (" + fullname + ");");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO actor(fullName) VALUES (" + fullname + ");");
             ps.executeQuery();
             connection.close();
         } catch (SQLException e) {
@@ -44,7 +44,7 @@ public class ActorManager implements ActorManagerLocal {
     public void updateActor(long idActor, String newName){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("UPDATE actor SET FullName = '" + newName + "' WHERE idActor =" + idActor + ";");
+            PreparedStatement ps = connection.prepareStatement("UPDATE actor SET fullName = '" + newName + "' WHERE idActor =" + idActor + ";");
             ps.executeQuery();
             connection.close();
         } catch (SQLException e) {
@@ -67,7 +67,7 @@ public class ActorManager implements ActorManagerLocal {
         List<Actor> actors = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor WHERE FullName LIKE '" + search + "';");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor WHERE fullName LIKE '" + search + "';");
             readResult(actors, ps);
             connection.close();
         } catch (SQLException e) {
