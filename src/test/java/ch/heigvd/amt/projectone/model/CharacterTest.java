@@ -8,13 +8,13 @@ class CharacterTest {
 
     @Test
     public void itShouldBePossibleToCreateACharacter() {
-        Character anonymousCharacter = new Character("test", 12, 42);
+        Character anonymousCharacter = new Character(12, 42, "test");
         assertNotNull(anonymousCharacter);
     }
 
     @Test
     public void characterShouldBeAbleToHaveAName() {
-        Character harryPotter = new Character("Harry Potter", 1,2);
+        Character harryPotter = new Character(2, 1,"Harry Potter");
         assertEquals("Harry Potter", harryPotter.getName());
     }
 
