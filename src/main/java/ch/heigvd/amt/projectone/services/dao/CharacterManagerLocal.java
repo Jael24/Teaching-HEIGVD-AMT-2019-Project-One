@@ -8,4 +8,8 @@ import java.util.List;
 @Local
 public interface CharacterManagerLocal {
     public List<Character> findAllCharacters();
+    void createCharacter(String charName, long idActor, long idMovie);
+    void updateCharacter(long idActor, long idMovie, String newName);
+    void deleteCharacter(long idActor, long idMovie);
+    List<Character> findCharacter(String search);
 }
