@@ -1,14 +1,19 @@
 package ch.heigvd.amt.projectone.model;
 
 public class Movie {
-    private long id;
-    private String title;
+    private long idMovie;
+    private String movieName;
 
-    public long getId() {
-        return id;
+    public long getIdMovie() {
+        return idMovie;
     }
 
-    public String getTitle() {
-        return title;
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public Movie(long idMovie, String movieName){
+        this.idMovie = idMovie;
+        this.movieName = movieName;
     }
 }
