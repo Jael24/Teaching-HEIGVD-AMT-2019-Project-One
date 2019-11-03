@@ -3,6 +3,7 @@ package ch.heigvd.amt.projectone.services.dao;
 import ch.heigvd.amt.projectone.model.Actor;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,12 +12,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
+@Stateless
 public class ActorManager implements ActorManagerLocal {
-    @Resource(lookup = "jdbc/sakila")
-            private DataSource dataSource;
+    @Resource(lookup = "jdbc/cinema")
+    DataSource dataSource;
 
+    @Override
     public List<Actor> findAllActors(){
         List<Actor> actors = new ArrayList<>();
         try {
@@ -30,10 +31,11 @@ public class ActorManager implements ActorManagerLocal {
         return actors;
     }
 
+    @Override
     public void createActor(String fullname){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO actor(FullName) VALUES (" + fullname + ");");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO actor(fullName) VALUES (" + fullname + ");");
             ps.executeQuery();
             connection.close();
         } catch (SQLException e) {
@@ -41,10 +43,11 @@ public class ActorManager implements ActorManagerLocal {
         }
     }
 
+    @Override
     public void updateActor(long idActor, String newName){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("UPDATE actor SET FullName = '" + newName + "' WHERE idActor =" + idActor + ";");
+            PreparedStatement ps = connection.prepareStatement("UPDATE actor SET fullName = '" + newName + "' WHERE idActor =" + idActor + ";");
             ps.executeQuery();
             connection.close();
         } catch (SQLException e) {
@@ -52,6 +55,7 @@ public class ActorManager implements ActorManagerLocal {
         }
     }
 
+    @Override
     public void deleteActor(long idActor){
         try {
             Connection connection = dataSource.getConnection();
@@ -63,11 +67,12 @@ public class ActorManager implements ActorManagerLocal {
         }
     }
 
+    @Override
     public List<Actor> findActor(String search){
         List<Actor> actors = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor WHERE FullName LIKE '" + search + "';");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor WHERE fullName LIKE '" + search + "';");
             readResult(actors, ps);
             connection.close();
         } catch (SQLException e) {
