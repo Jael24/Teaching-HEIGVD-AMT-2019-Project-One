@@ -1,6 +1,7 @@
 package ch.heigvd.amt.projectone.presentation;
 
 import ch.heigvd.amt.projectone.services.dao.ActorManager;
+import ch.heigvd.amt.projectone.services.dao.ActorManagerLocal;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,12 +14,12 @@ import java.io.IOException;
 public class ActorServlet extends javax.servlet.http.HttpServlet {
 
     @EJB
-    ActorManager actorManager = new ActorManager();
+    private ActorManagerLocal actorManager;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         req.setAttribute("actors", actorManager.findAllActors());
-        req.getRequestDispatcher("WEB-INF/pages/Actor.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/Actor.jsp").forward(req, resp);
     }
 }

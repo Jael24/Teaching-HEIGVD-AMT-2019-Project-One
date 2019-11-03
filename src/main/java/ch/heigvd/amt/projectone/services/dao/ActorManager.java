@@ -3,6 +3,7 @@ package ch.heigvd.amt.projectone.services.dao;
 import ch.heigvd.amt.projectone.model.Actor;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,10 +12,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class ActorManager implements ActorManagerLocal {
     @Resource(lookup = "jdbc/cinema")
     DataSource dataSource;
 
+    @Override
     public List<Actor> findAllActors(){
         List<Actor> actors = new ArrayList<>();
         try {
@@ -28,6 +31,7 @@ public class ActorManager implements ActorManagerLocal {
         return actors;
     }
 
+    @Override
     public void createActor(String fullname){
         try {
             Connection connection = dataSource.getConnection();
@@ -39,6 +43,7 @@ public class ActorManager implements ActorManagerLocal {
         }
     }
 
+    @Override
     public void updateActor(long idActor, String newName){
         try {
             Connection connection = dataSource.getConnection();
@@ -50,6 +55,7 @@ public class ActorManager implements ActorManagerLocal {
         }
     }
 
+    @Override
     public void deleteActor(long idActor){
         try {
             Connection connection = dataSource.getConnection();
@@ -61,6 +67,7 @@ public class ActorManager implements ActorManagerLocal {
         }
     }
 
+    @Override
     public List<Actor> findActor(String search){
         List<Actor> actors = new ArrayList<>();
         try {
