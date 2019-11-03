@@ -8,16 +8,14 @@ class ActorTest {
 
     @Test
     public void itShouldBePossibleToCreateAnActor() {
-        Actor anonymousActor = new Actor();
+        Actor anonymousActor = new Actor(0, "test");
         assertNotNull(anonymousActor);
     }
 
     @Test
-    public void itShouldBePossibleToBuildAnActor() {
-        Actor leonardoDiCaprio = new Actor.builder().firstName("Leonardo").lastName("Di Caprio").build();
-
-        assertEquals("Leonardo", leonardoDiCaprio.getFirstName());
-        assertEquals("Di Caprio", leonardoDiCaprio.getLastName());
+    public void actorShouldBeAbleToHaveAName() {
+        Actor diCaprio = new Actor(0, "Leonardo Di Caprio");
+        assertEquals("Leonardo Di Caprio", diCaprio.getFullname());
     }
 
 }

@@ -1,7 +1,6 @@
 package ch.heigvd.amt.projectone.services.dao;
 
-import ch.heigvd.amt.projectone.model.Actor;
-import ch.heigvd.amt.projectone.model.Movie;
+import ch.heigvd.amt.projectone.model.Clip;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -12,27 +11,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieManager {
+public class ClipManager implements ClipManagerLocal{
     @Resource(lookup = "jdbc/sakila")
     private DataSource dataSource;
 
-    public List<Movie> findAllMovies(){
-        List<Movie> movies = new ArrayList<>();
+    public List<Clip> findAllClips(){
+        List<Clip> clips = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM movies;");
-            readResult(movies, ps);
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM clips;");
+            readResult(clips, ps);
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return movies;
+        return clips;
     }
 
-    public void createMovie(String movieName){
+    public void createClip(String title){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO movies(movieName) VALUES (" + movieName + ");");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO clips(title) VALUES (" + title + ");");
             ps.executeQuery();
             connection.close();
         } catch (SQLException e) {
@@ -40,10 +39,10 @@ public class MovieManager {
         }
     }
 
-    public void updateMovie(long idMovie, String newName){
+    public void updateClip(long idClip, String newName){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("UPDATE movies SET FullName = '" + newName + "' WHERE idMovie =" + idMovie + ";");
+            PreparedStatement ps = connection.prepareStatement("UPDATE clips SET title = '" + newName + "' WHERE idClip =" + idClip + ";");
             ps.executeQuery();
             connection.close();
         } catch (SQLException e) {
@@ -51,10 +50,10 @@ public class MovieManager {
         }
     }
 
-    public void deleteMovie(long idMovie){
+    public void deleteClip(long idClip){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM movies WHERE idMovie =" + idMovie + ";");
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM clips WHERE idClip =" + idClip + ";");
             ps.executeQuery();
             connection.close();
         } catch (SQLException e) {
@@ -62,25 +61,25 @@ public class MovieManager {
         }
     }
 
-    public List<Movie> findMovie(String search){
-        List<Movie> movies = new ArrayList<>();
+    public List<Clip> findClip(String search){
+        List<Clip> clips = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM movies WHERE movieName LIKE '" + search + "';");
-            readResult(movies, ps);
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM clips WHERE title LIKE '" + search + "';");
+            readResult(clips, ps);
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return movies;
+        return clips;
     }
 
-    private void readResult(List<Movie> movies, PreparedStatement ps) throws SQLException {
+    private void readResult(List<Clip> clips, PreparedStatement ps) throws SQLException {
         ResultSet result = ps.executeQuery();
         while (result.next()){
-            String movieName = result.getString("movieName");
-            long idMovie = result.getLong("idMovie");
-            movies.add(new Movie(idMovie, movieName));
+            String title = result.getString("title");
+            long idClip = result.getLong("idClip");
+            clips.add(new Clip(idClip, title));
         }
     }
 }
