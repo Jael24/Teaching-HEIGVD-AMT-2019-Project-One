@@ -26,33 +26,15 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        Actor actor = actorManager.findActorByID(Long.getLong(username));
+        Actor actor = actorManager.findActorByID(Long.parseLong(username));
 
-        if(actor != null && actor) {
-        }
-
-
-    }
-}
-
-
-/*
-        if (usr != null) {
-            if (usr.getPassword().equals(password)) {
-                // Save the user id in the session
-                req.getSession().setAttribute("user", usr);
-                resp.sendRedirect(req.getContextPath() + "/");
-                return;
-            } else {
-                // The password for the given email is wrong
-                req.setAttribute("error", "Wrong password !");
-            }
+        if(actor != null && actor.getPassword().equals(password)) {
+            req.getSession().setAttribute("login", actor.getIdActor());
+            resp.sendRedirect(req.getContextPath() + "/");
         } else {
-            // The email doesn't exist
-            req.setAttribute("error", "Wrong user email !");
+            req.setAttribute("login", -1);
+            req.setAttribute("errorMsg", "Nom d'utilisateur et/ou mot de passe faux.");
+            resp.sendRedirect(req.getContextPath() + "/login");
         }
-
-        req.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(req, resp);
     }
 }
- */

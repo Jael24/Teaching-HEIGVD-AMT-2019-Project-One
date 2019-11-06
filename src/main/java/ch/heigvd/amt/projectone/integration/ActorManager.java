@@ -88,7 +88,8 @@ public class ActorManager implements ActorManagerLocal {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor WHERE idActor = " + search + ";");
             ResultSet result = ps.executeQuery();
-            actor = new Actor(result.getLong("idActor"), result.getString("fullName"), result.getString("password"));
+            result.next();
+            actor = new Actor(result.getLong("idActor"), result.getString("fullname"), result.getString("password"));
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,7 +100,7 @@ public class ActorManager implements ActorManagerLocal {
     private void readResult(List<Actor> actors, PreparedStatement ps) throws SQLException {
         ResultSet result = ps.executeQuery();
         while (result.next()){
-            String fullName = result.getString("fullName");
+            String fullName = result.getString("fullname");
             long pid = result.getLong("idActor");
             String password = result.getString("password");
             actors.add(new Actor(pid, fullName, password));
