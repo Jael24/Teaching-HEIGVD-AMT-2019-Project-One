@@ -32,11 +32,12 @@ public class ActorManager implements ActorManagerLocal {
     }
 
     @Override
-    public void createActor(String fullname){
+    public void createActor(String fullname, String password){
         try {
+            long newId = findMaxId()+1;
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO actor(fullName) VALUES (" + fullname + ");");
-            ps.executeQuery();
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO actor(idActor, fullname, password) VALUES (" + newId + ", '" + fullname + "', '" + password + "');");
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,7 +49,7 @@ public class ActorManager implements ActorManagerLocal {
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("UPDATE actor SET fullName = '" + newName + "' WHERE idActor =" + idActor + ";");
-            ps.executeQuery();
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,6 +97,23 @@ public class ActorManager implements ActorManagerLocal {
         }
         return actor;
     }
+
+    @Override
+    public long findMaxId(){
+        long returnValue = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT MAX(idActor) AS maxId FROM actor;");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            returnValue = result.getLong("maxId");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
+    }
+
 
     private void readResult(List<Actor> actors, PreparedStatement ps) throws SQLException {
         ResultSet result = ps.executeQuery();

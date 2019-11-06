@@ -72,7 +72,7 @@
           </form>
 
           <p class="mb-0">
-            <a href="register.jsp" class="text-center"
+            <a href="register" class="text-center"
               >Créer un nouvel utilisateur</a
             >
           </p>

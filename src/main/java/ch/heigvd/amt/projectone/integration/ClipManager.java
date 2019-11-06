@@ -35,7 +35,7 @@ public class ClipManager implements ClipManagerLocal{
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("INSERT INTO movie(title) VALUES (" + title + ");");
-            ps.executeQuery();
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class ClipManager implements ClipManagerLocal{
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("UPDATE movie SET title = '" + newName + "' WHERE idMovie =" + idClip + ";");
-            ps.executeQuery();
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

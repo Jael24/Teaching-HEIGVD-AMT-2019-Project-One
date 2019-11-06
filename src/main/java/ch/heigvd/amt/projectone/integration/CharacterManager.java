@@ -32,7 +32,7 @@ public class CharacterManager implements CharacterManagerLocal{
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("INSERT INTO chars(idActor, idMovie, charName) VALUES (" + idActor + ", "+ idMovie + ", "+ charName + ");");
-            ps.executeQuery();
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,7 +43,7 @@ public class CharacterManager implements CharacterManagerLocal{
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("UPDATE chars SET charName = '" + newName + "' WHERE idActor =" + idActor + "AND idMovie =" + idMovie + ";");
-            ps.executeQuery();
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
