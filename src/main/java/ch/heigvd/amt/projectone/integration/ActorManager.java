@@ -81,12 +81,28 @@ public class ActorManager implements ActorManagerLocal {
         return actors;
     }
 
+    @Override
+    public Actor findActorByID(long search){
+        Actor actor = null;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor WHERE idActor = " + search + ";");
+            ResultSet result = ps.executeQuery();
+            actor = new Actor(result.getLong("idActor"), result.getString("fullName"), result.getString("password"));
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return actor;
+    }
+
     private void readResult(List<Actor> actors, PreparedStatement ps) throws SQLException {
         ResultSet result = ps.executeQuery();
         while (result.next()){
             String fullName = result.getString("fullName");
             long pid = result.getLong("idActor");
-            actors.add(new Actor(pid, fullName));
+            String password = result.getString("password");
+            actors.add(new Actor(pid, fullName, password));
         }
     }
 }

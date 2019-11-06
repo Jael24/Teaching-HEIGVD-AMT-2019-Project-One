@@ -3,12 +3,12 @@ package ch.heigvd.amt.projectone.model;
 import lombok.Getter;
 
 @Getter
-public class Clip {
-    private long idClip;
+public class Movie {
+    private long idMovie;
     private String title;
 
-    public Clip(long idClip, String title) {
-        this.idClip = idClip;
+    public Movie(long idMovie, String title) {
+        this.idMovie = idMovie;
         this.title = title;
     }
 }

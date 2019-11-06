@@ -12,4 +12,5 @@ public interface ActorManagerLocal {
     void updateActor(long idActor, String newName);
     void deleteActor(long idActor);
     List<Actor> findActor(String search);
+    Actor findActorByID(long search);
 }

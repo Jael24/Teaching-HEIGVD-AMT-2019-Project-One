@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS `actor`;
 CREATE TABLE IF NOT EXISTS `actor` (
   `idActor` INT NOT NULL,
   `fullname` VARCHAR(200) NULL,
+  `password` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`idActor`))
 ENGINE = InnoDB;
 

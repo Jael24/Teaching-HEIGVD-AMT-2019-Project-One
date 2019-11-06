@@ -19,6 +19,6 @@ public class ActorServlet extends javax.servlet.http.HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         req.setAttribute("actors", actorManager.findAllActors());
-        req.getRequestDispatcher("/WEB-INF/pages/Actor.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/pages/Movie.jsp").forward(req, resp);
     }
 }

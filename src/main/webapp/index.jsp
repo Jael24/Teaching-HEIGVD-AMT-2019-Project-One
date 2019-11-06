@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>AMTProjectOne</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Font Awesome -->
@@ -69,7 +69,7 @@
               class="brand-image img-circle elevation-3"
               style="opacity: .8"
       />
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">AMTProjectOne</span>
     </a>
 
     <!-- Sidebar -->
@@ -127,12 +127,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h1>Liste des films</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
+              <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+              <li class="breadcrumb-item active">Liste des films</li>
             </ol>
           </div>
         </div>
@@ -145,25 +145,20 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">
-                DataTable with minimal features & hover style
-              </h3>
-            </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <td>Actor ID</td>
-                  <td>Full name</td>
+                  <td>ID du film</td>
+                  <td>Titre</td>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${actors}" var="actor">
+                <c:forEach items="${movies}" var="movie">
                   <tr>
-                    <td>${actor.idActor}</td>
-                    <td>${actor.fullName}</td>
+                    <td>${movie.idMovie}</td>
+                    <td>${movie.title}</td>
                   </tr>
                 </c:forEach>
                 </tbody>
