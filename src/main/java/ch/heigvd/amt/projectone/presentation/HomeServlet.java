@@ -18,7 +18,7 @@ public class HomeServlet  extends javax.servlet.http.HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
-        req.setAttribute("actors", actorManager.findAllActors());
+        req.setAttribute("actors", actorManager.findActor("cruise"));
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

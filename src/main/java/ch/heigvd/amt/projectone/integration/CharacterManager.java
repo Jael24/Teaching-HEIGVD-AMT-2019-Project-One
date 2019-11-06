@@ -65,7 +65,7 @@ public class CharacterManager implements CharacterManagerLocal{
         List<Character> chars = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM chars WHERE charName LIKE '" + search + "';");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM chars WHERE charName LIKE '%" + search + "%';");
             readResult(chars, ps);
             connection.close();
         } catch (SQLException e) {

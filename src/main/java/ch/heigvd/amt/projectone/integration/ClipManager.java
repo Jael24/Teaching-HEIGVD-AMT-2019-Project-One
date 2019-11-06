@@ -65,7 +65,7 @@ public class ClipManager implements ClipManagerLocal{
         List<Clip> clips = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM clips WHERE title LIKE '" + search + "';");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM clips WHERE title LIKE '%" + search + "%';");
             readResult(clips, ps);
             connection.close();
         } catch (SQLException e) {

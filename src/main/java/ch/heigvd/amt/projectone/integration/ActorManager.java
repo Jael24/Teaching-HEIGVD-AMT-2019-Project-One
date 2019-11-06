@@ -22,7 +22,7 @@ public class ActorManager implements ActorManagerLocal {
         List<Actor> actors = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor LIMIT 10;");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor LIMIT 100;");
             readResult(actors, ps);
             connection.close();
         } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class ActorManager implements ActorManagerLocal {
         List<Actor> actors = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor WHERE fullName LIKE '" + search + "';");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM actor WHERE fullName LIKE '%" + search + "%';");
             readResult(actors, ps);
             connection.close();
         } catch (SQLException e) {
