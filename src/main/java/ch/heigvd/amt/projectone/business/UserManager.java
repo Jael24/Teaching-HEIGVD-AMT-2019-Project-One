@@ -1,4 +1,4 @@
-package Model;
+package ch.heigvd.amt.projectone.business;
 
 import java.util.HashMap;
 
@@ -7,7 +7,7 @@ public class UserManager {
     private HashMap<String,String> users;
 
     private UserManager(){
-        users = new HashMap<String, String>();
+        users = new HashMap<>();
     }
 
     public UserManager getInstance(){

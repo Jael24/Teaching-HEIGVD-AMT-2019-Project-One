@@ -9,24 +9,25 @@ USE `cinema` ;
 
 DROP TABLE IF EXISTS `actor`;
 CREATE TABLE IF NOT EXISTS `actor` (
-  `idActor` INT NOT NULL AUTO_INCREMENT,
+  `idActor` INT NOT NULL,
   `fullname` VARCHAR(200) NULL,
   PRIMARY KEY (`idActor`))
 ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `movie`;
 CREATE TABLE IF NOT EXISTS `movie` (
-  `idMovie` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(250) NULL,
+  `idMovie` INT NOT NULL,
+  `title` VARCHAR(400) NULL,
   PRIMARY KEY (`idMovie`))
 ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `character`;
 CREATE TABLE IF NOT EXISTS `character` (
+  `idChar` INT NOT NULL,
   `idActor` INT NOT NULL,
   `idMovie` INT NOT NULL,
-  `charName` VARCHAR(45) NULL,
-  PRIMARY KEY (`idActor`, `idMovie`),
+  `charName` VARCHAR(1000) NULL,
+  PRIMARY KEY (`idChar`),
   CONSTRAINT `fk_Character_Actor`
     FOREIGN KEY (`idActor`)
     REFERENCES `actor` (`idActor`)

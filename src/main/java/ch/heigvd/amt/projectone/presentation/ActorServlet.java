@@ -1,7 +1,6 @@
 package ch.heigvd.amt.projectone.presentation;
 
-import ch.heigvd.amt.projectone.services.dao.ActorManager;
-import ch.heigvd.amt.projectone.services.dao.ActorManagerLocal;
+import ch.heigvd.amt.projectone.integration.ActorManagerLocal;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

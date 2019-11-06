@@ -1,9 +1,18 @@
-INSERT INTO cinema.actor(fullName) VALUES ("Daniel Radcliffe");
-INSERT INTO cinema.actor(fullName) VALUES ("Rupert Grint");
-INSERT INTO cinema.actor(fullName) VALUES ("Emma Watson");
+LOAD DATA INFILE "/var/lib/mysql-files/actors_cleaned.csv"
+INTO TABLE cinema.actor
+COLUMNS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
 
-INSERT INTO cinema.movie(title) VALUES ("Harry Potter and the Philosopher's Stone");
+LOAD DATA INFILE "/var/lib/mysql-files/clips_cleaned.csv"
+INTO TABLE cinema.movie
+COLUMNS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
 
-INSERT INTO cinema.character(idActor, idMovie, charName) VALUES (1, 1, "Harry Potter");
-INSERT INTO cinema.character(idActor, idMovie, charName) VALUES (2, 1, "Ron Weasley");
-INSERT INTO cinema.character(idActor, idMovie, charName) VALUES (3, 1, "Hermione Granger");
+LOAD DATA INFILE "/var/lib/mysql-files/chars_cleaned.csv"
+INTO TABLE cinema.character
+COLUMNS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
