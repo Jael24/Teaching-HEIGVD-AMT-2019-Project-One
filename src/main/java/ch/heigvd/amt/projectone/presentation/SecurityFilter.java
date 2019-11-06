@@ -16,7 +16,7 @@ public class SecurityFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
-        if (req.getSession().getAttribute("login") == null || req.getSession().getAttribute("login") == "-1") {
+        if (req.getSession().getAttribute("login") == null || req.getSession().getAttribute("login").toString().equals("-1")) {
             resp.sendRedirect(req.getContextPath() + "/login");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

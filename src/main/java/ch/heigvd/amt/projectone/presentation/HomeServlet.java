@@ -22,6 +22,11 @@ public class HomeServlet  extends javax.servlet.http.HttpServlet {
         req.setAttribute("movies", clipManager.findAllClips());
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("test");
+    }
 }
 
 
