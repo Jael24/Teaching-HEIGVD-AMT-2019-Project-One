@@ -12,4 +12,5 @@ public interface CharacterManagerLocal {
     void updateCharacter(long idActor, long idMovie, String newName);
     void deleteCharacter(long idActor, long idMovie);
     List<Character> findCharacter(String search);
+    List<Character> findCharWhereActorHasPlayed(long actorId);
 }

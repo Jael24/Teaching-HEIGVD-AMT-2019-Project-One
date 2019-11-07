@@ -92,7 +92,7 @@
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a class="nav-link active">
+            <a href="/project-one-1.0-SNAPSHOT/" class="nav-link ">
               <i class="nav-icon fas fa-film"></i>
               <p>
                 Films
@@ -101,7 +101,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="characters" class="nav-link ">
+            <a class="nav-link active">
               <i class="nav-icon fas fa-user-astronaut"></i>
               <p>
                 Personnages
@@ -110,7 +110,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Acteur
@@ -138,12 +138,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Liste des films</h1>
+            <h1>Liste des personnages</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active">Liste des films</li>
+              <li class="breadcrumb-item active">Liste des personnages</li>
             </ol>
           </div>
         </div>
@@ -161,15 +161,17 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <td>ID du film</td>
-                  <td>Titre</td>
+                  <td>ID du personnage</td>
+                  <td>Nom du personnage</td>
+                  <td>Nom du film</td>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${movies}" var="movie">
+                <c:forEach items="${characters}" var="character">
                   <tr>
-                    <td>${movie.idMovie}</td>
-                    <td>${movie.title}</td>
+                    <td>${character.idChar}</td>
+                    <td>${character.charName}</td>
+                    <td>${character.movie.title}</td>
                   </tr>
                 </c:forEach>
                 </tbody>

@@ -4,25 +4,15 @@ import lombok.Getter;
 
 @Getter
 public class Character {
-    private long idActor;
-    private long idMovie;
+    private long idChar;
+    private Actor actor;
+    private Movie movie;
     private String charName;
 
-    public Character(long idActor, long idMovie, String charName){
-            this.idActor = idActor;
-            this.idMovie = idMovie;
+    public Character(long idChar, Actor actor, Movie movie, String charName){
+            this.idChar = idChar;
+            this.actor = actor;
+            this.movie = movie;
             this.charName = charName;
-    }
-
-    public long getIdActor() {
-        return idActor;
-    }
-
-    public long getIdMovie() {
-        return idMovie;
-    }
-
-    public String getName() {
-        return charName;
     }
 }

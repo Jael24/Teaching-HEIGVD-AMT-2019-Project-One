@@ -91,6 +91,22 @@ public class ClipManager implements ClipManagerLocal{
         return movies;
     }
 
+    @Override
+    public Movie findClipById(long search){
+        Movie movie = null;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM movie WHERE idMovie = " + search + ";");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            movie = new Movie(result.getLong("idMovie"), result.getString("title"));
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movie;
+    }
+
     private void readResult(List<Movie> movies, PreparedStatement ps) throws SQLException {
         ResultSet result = ps.executeQuery();
         while (result.next()){

@@ -13,4 +13,5 @@ public interface ClipManagerLocal {
     void deleteClip(long idClip);
     List<Movie> findClip(String search);
     List<Movie> findClipsWhereActorHasPlayed(long actorId);
+    Movie findClipById(long search);
 }
