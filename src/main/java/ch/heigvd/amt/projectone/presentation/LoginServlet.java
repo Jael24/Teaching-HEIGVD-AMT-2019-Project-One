@@ -18,8 +18,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // If we come from a logout action
-        req.getSession().setAttribute("login", -1);
+
 
         req.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(req, resp);
     }

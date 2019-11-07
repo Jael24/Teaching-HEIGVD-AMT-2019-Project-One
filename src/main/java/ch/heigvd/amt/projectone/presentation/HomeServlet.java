@@ -16,16 +16,18 @@ public class HomeServlet  extends javax.servlet.http.HttpServlet {
     @EJB
     private ClipManagerLocal clipManager;
 
+    @EJB
+    private ActorManagerLocal actorManager;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
-        req.setAttribute("movies", clipManager.findAllClips());
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("test");
+        long actorId = Long.parseLong(req.getSession().getAttribute("login").toString());
+
+        req.setAttribute("movies", clipManager.findClipsWhereActorHasPlayed(actorId));
+        req.getSession().setAttribute("fullName", actorManager.findActorByID(actorId).getFullName());
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }
 

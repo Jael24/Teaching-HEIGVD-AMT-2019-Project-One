@@ -77,7 +77,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a class="d-block">Tom Cruise</a>
+          <a class="d-block"><%=request.getSession().getAttribute("fullName")%></a>
         </div>
       </div>
 
@@ -123,7 +123,7 @@
       </nav>
       <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="position:absolute;bottom:0;">
         <div class="info">
-          <a href="login" class="d-block">Se déconnecter</a>
+          <a href="logout" class="d-block">Se déconnecter</a>
         </div>
       </div>
       <!-- /.sidebar-menu -->

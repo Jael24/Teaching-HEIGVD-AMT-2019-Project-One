@@ -31,6 +31,20 @@ public class ClipManager implements ClipManagerLocal{
         return movies;
     }
 
+    @Override
+    public List<Movie> findClipsWhereActorHasPlayed(long actorId) {
+        List<Movie> movies = new ArrayList<>();
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `movie` INNER JOIN `character` ON `movie`.idMovie = `character`.idMovie WHERE `character`.idActor = " + actorId +";");
+            readResult(movies, ps);
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
     public void createClip(String title){
         try {
             Connection connection = dataSource.getConnection();
