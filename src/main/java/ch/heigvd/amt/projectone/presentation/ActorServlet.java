@@ -1,6 +1,7 @@
 package ch.heigvd.amt.projectone.presentation;
 
 import ch.heigvd.amt.projectone.integration.ActorManagerLocal;
+import ch.heigvd.amt.projectone.model.Actor;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -18,7 +19,13 @@ public class ActorServlet extends javax.servlet.http.HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
-        req.setAttribute("actors", actorManager.findAllActors());
-        req.getRequestDispatcher("/WEB-INF/pages/Movie.jsp").forward(req, resp);
+
+        long actorId = Long.parseLong(req.getSession().getAttribute("login").toString());
+
+        Actor actor = actorManager.findActorByID(actorId);
+
+
+        req.getSession().setAttribute("actor", actor);
+        req.getRequestDispatcher("/WEB-INF/pages/actor.jsp").forward(req, resp);
     }
 }
