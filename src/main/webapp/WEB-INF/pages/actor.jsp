@@ -101,7 +101,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">
+                        <a href="characters" class="nav-link ">
                             <i class="nav-icon fas fa-user-astronaut"></i>
                             <p>
                                 Personnages
@@ -110,7 +110,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link active">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Acteur
@@ -166,10 +166,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>${actor.idActor}</td>
-                                        <td>${actor.fullName}</td>
-                                    </tr>
+                                <tr>
+                                    <td>${actor.idActor}</td>
+                                    <td>${actor.fullName}</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

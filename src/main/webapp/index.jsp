@@ -110,7 +110,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link ">
+            <a href="actor" class="nav-link ">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Acteur
@@ -156,13 +156,12 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <!-- /.card-header -->
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <td>ID du film</td>
-                  <td>Titre</td>
+                  <th>ID du film</th>
+                  <th>Titre</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -173,6 +172,12 @@
                   </tr>
                 </c:forEach>
                 </tbody>
+                <tfoot>
+                <tr>
+                  <th>ID du film</th>
+                  <th>Titre</th>
+                </tr>
+                </tfoot>
               </table>
             </div>
           </div>
@@ -202,6 +207,8 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge("uibutton", $.ui.button);
@@ -232,5 +239,22 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+</script>
 </body>
 </html>
