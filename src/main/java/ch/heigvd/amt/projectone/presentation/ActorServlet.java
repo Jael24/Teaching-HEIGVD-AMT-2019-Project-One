@@ -24,7 +24,6 @@ public class ActorServlet extends javax.servlet.http.HttpServlet {
 
         Actor actor = actorManager.findActorByID(actorId);
 
-
         req.getSession().setAttribute("actor", actor);
         req.getRequestDispatcher("/WEB-INF/pages/actor.jsp").forward(req, resp);
     }
