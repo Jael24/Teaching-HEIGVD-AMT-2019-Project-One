@@ -8,7 +8,7 @@ import java.util.List;
 @Local
 public interface ActorManagerLocal {
     List<Actor> findAllActors();
-    void createActor(String fullname, String password);
+    Actor createActor(String fullname, String password);
     void updateActor(long idActor, String newName);
     void deleteActor(long idActor);
     List<Actor> findActor(String search);

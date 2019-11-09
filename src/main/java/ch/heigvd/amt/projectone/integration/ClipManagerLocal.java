@@ -8,10 +8,11 @@ import java.util.List;
 @Local
 public interface ClipManagerLocal {
     List<Movie> findAllClips();
-    void createClip(String title);
+    Movie createClip(String title);
     void updateClip(long idClip, String newName);
     void deleteClip(long idClip);
     List<Movie> findClip(String search);
     List<Movie> findClipsWhereActorHasPlayed(long actorId);
     Movie findClipById(long search);
+    long findMaxId();
 }

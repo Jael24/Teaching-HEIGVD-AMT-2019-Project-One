@@ -92,7 +92,7 @@
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a class="nav-link active">
+            <a href="/project-one-1.0-SNAPSHOT/" class="nav-link active">
               <i class="nav-icon fas fa-film"></i>
               <p>
                 Films
@@ -110,7 +110,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="actor" class="nav-link ">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Acteur
@@ -138,15 +138,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <button onclick="location.href = '/project-one-1.0-SNAPSHOT/createMovie';" type="submit" class="btn btn-secondary m-auto">Ajouter un film</button>
-            <button onclick="location.href = '/project-one-1.0-SNAPSHOT/deleteMovie';" type="submit" class="btn btn-secondary m-auto">Supprimer un film</button>
-            <button onclick="location.href = '/project-one-1.0-SNAPSHOT/updateMovie';" type="submit" class="btn btn-secondary m-auto">Modifier un film</button>
-            <h1 class="mt-3">Liste des films</h1>
+            <h1>Création de film</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active">Liste des films</li>
+              <li class="breadcrumb-item active">Création de film</li>
             </ol>
           </div>
         </div>
@@ -156,33 +153,44 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>ID du film</th>
-                  <th>Titre</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${movies}" var="movie">
-                  <tr>
-                    <td>${movie.idMovie}</td>
-                    <td>${movie.title}</td>
-                  </tr>
-                </c:forEach>
-                </tbody>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-8">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Nouveau film</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" method="post">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Titre</label>
+                    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Entrer le titre">
+                  </div>
+                  <div class="form-group">
+                    <label for="characterPlayed">Personnage joué</label>
+                    <input type="text" class="form-control" name="character" id="characterPlayed" placeholder="Entrer le personnage">
 
-              </table>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+              </form>
             </div>
+            <!-- /.card -->
           </div>
-        </div>
-      </div>
-      <!-- /.container-fluid -->
+            <!--/.col (right) -->
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
     </section>
+    <!-- /.content -->
   </div>
   <!-- /.content -->
   <!-- /.content-wrapper -->
@@ -205,8 +213,6 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge("uibutton", $.ui.button);
@@ -237,22 +243,5 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<!-- page script -->
-<script>
-    $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-        });
-    });
-</script>
 </body>
 </html>

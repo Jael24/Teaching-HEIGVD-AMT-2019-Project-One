@@ -45,15 +45,21 @@ public class ClipManager implements ClipManagerLocal{
         return movies;
     }
 
-    public void createClip(String title){
+    public Movie createClip(String title){
+        long newId = 0;
         try {
+            newId = findMaxId()+1;
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO movie(title) VALUES (" + title + ");");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO movie(idMovie, title) VALUES (?, ?);");
+            ps.setLong(1, newId);
+            ps.setString(2, title);
             ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return new Movie(newId, title);
     }
 
     public void updateClip(long idClip, String newName){
@@ -71,7 +77,7 @@ public class ClipManager implements ClipManagerLocal{
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("DELETE FROM movie WHERE idMovie =" + idClip + ";");
-            ps.executeQuery();
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -105,6 +111,22 @@ public class ClipManager implements ClipManagerLocal{
             e.printStackTrace();
         }
         return movie;
+    }
+
+    @Override
+    public long findMaxId(){
+        long returnValue = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT MAX(idMovie) AS maxId FROM movie;");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            returnValue = result.getLong("maxId");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
     }
 
     private void readResult(List<Movie> movies, PreparedStatement ps) throws SQLException {

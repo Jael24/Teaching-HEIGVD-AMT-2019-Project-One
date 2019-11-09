@@ -34,15 +34,18 @@ public class CharacterManager implements CharacterManagerLocal{
     }
 
     @Override
-    public void createCharacter(String charName, long idActor, long idMovie){
+    public long createCharacter(String charName, long idActor, long idMovie){
+        long newId = 0;
         try {
+            newId = findMaxId()+1;
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO `character`(idActor, idMovie, charName) VALUES (" + idActor + ", "+ idMovie + ", "+ charName + ");");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO `character`(idchar, idActor, idMovie, charName) VALUES (" + newId + ", " + idActor + ", "+ idMovie + ", '"+ charName + "');");
             ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return newId;
     }
 
 
@@ -77,7 +80,7 @@ public class CharacterManager implements CharacterManagerLocal{
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("DELETE FROM `character` WHERE idActor =" + idActor + "AND idMovie =" + idMovie + ";");
-            ps.executeQuery();
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,6 +99,22 @@ public class CharacterManager implements CharacterManagerLocal{
             e.printStackTrace();
         }
         return chars;
+    }
+
+    @Override
+    public long findMaxId(){
+        long returnValue = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT MAX(idChar) AS maxId FROM `character`;");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            returnValue = result.getLong("maxId");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
     }
 
     private void readResult(List<Character> chars, PreparedStatement ps) throws SQLException {

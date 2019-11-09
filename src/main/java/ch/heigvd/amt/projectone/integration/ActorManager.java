@@ -32,9 +32,10 @@ public class ActorManager implements ActorManagerLocal {
     }
 
     @Override
-    public void createActor(String fullname, String password){
+    public Actor createActor(String fullname, String password){
+        long newId = 0;
         try {
-            long newId = findMaxId()+1;
+            newId = findMaxId()+1;
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("INSERT INTO actor(idActor, fullname, password) VALUES (" + newId + ", '" + fullname + "', '" + password + "');");
             ps.executeUpdate();
@@ -42,6 +43,7 @@ public class ActorManager implements ActorManagerLocal {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return new Actor(newId, fullname, password);
     }
 
     @Override
@@ -61,7 +63,7 @@ public class ActorManager implements ActorManagerLocal {
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement ps = connection.prepareStatement("DELETE FROM actor WHERE idActor =" + idActor + ";");
-            ps.executeQuery();
+            ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
