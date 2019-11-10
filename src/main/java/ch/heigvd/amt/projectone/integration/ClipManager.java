@@ -65,7 +65,8 @@ public class ClipManager implements ClipManagerLocal{
     public void updateClip(long idClip, String newName){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("UPDATE movie SET title = '" + newName + "' WHERE idMovie =" + idClip + ";");
+            PreparedStatement ps = connection.prepareStatement("UPDATE movie SET title = ? WHERE idMovie =" + idClip + ";");
+            ps.setString(1, newName);
             ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
