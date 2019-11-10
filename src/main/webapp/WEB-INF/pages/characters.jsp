@@ -137,6 +137,9 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
+          <button onclick="location.href = '/project-one-1.0-SNAPSHOT/createCharacter';" type="submit" class="btn btn-secondary m-auto">Ajouter un personnage</button>
+          <button onclick="location.href = '/project-one-1.0-SNAPSHOT/deleteCharacter';" type="submit" class="btn btn-secondary m-auto">Supprimer un personnage</button>
+          <button onclick="location.href = '/project-one-1.0-SNAPSHOT/updateCharacter';" type="submit" class="btn btn-secondary m-auto">Modifier un personnage</button>
           <div class="col-sm-6">
             <h1>Liste des personnages</h1>
           </div>

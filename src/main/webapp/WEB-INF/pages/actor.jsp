@@ -179,6 +179,11 @@
             <!-- /.container-fluid -->
         </section>
     </div>
+    <form role="form" method="post">
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Supprimer le compte</button>
+        </div>
+    </form>
     <!-- /.content -->
     <!-- /.content-wrapper -->
     <footer class="main-footer">

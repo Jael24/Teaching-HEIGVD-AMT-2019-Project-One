@@ -11,4 +11,12 @@ public class Movie {
         this.idMovie = idMovie;
         this.title = title;
     }
+
+    public long getIdMovie() {
+        return idMovie;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }
