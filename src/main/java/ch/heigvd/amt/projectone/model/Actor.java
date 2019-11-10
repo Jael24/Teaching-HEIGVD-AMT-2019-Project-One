@@ -13,4 +13,16 @@ public class Actor {
         this.fullName = fullName;
         this.password = password;
     }
+
+    public long getIdActor() {
+        return idActor;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
