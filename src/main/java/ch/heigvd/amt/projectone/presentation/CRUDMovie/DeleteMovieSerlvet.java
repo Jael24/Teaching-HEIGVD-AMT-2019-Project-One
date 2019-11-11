@@ -12,17 +12,35 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Class used to represent a servlet used to delete movies
+ * @author Guillaume Vetter & Jael Dubey
+ */
 @WebServlet(name = "DeleteMovieServlet", urlPatterns = "/deleteMovie")
 public class DeleteMovieSerlvet extends javax.servlet.http.HttpServlet {
 
     @EJB
     ClipManagerLocal clipManager;
 
+    /**
+     * Method called on a GET request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/pages/deleteMovie.jsp").forward(req, resp);
     }
 
+    /**
+     * Method called on a POST request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long idMovieToDelete = Long.parseLong(req.getParameter("idMovieToDelete"));

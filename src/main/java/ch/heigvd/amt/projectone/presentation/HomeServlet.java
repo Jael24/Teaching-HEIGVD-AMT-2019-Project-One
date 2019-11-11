@@ -15,6 +15,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Class used to represent a servlet used to display the homepage
+ * @author Guillaume Vetter & Jael Dubey
+ */
 @WebServlet(name="HomeServlet", urlPatterns = "")
 public class HomeServlet  extends javax.servlet.http.HttpServlet {
 
@@ -24,6 +28,13 @@ public class HomeServlet  extends javax.servlet.http.HttpServlet {
     @EJB
     private ActorManagerLocal actorManager;
 
+    /**
+     * Method called on a GET request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
@@ -34,6 +45,13 @@ public class HomeServlet  extends javax.servlet.http.HttpServlet {
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 
+    /**
+     * Method called on a POST request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int start = Integer.parseInt(req.getParameter("start"));
@@ -43,7 +61,6 @@ public class HomeServlet  extends javax.servlet.http.HttpServlet {
         List<Movie> movies = clipManager.findClipsWhereActorHasPlayed(actorId, start, length);
         long nbMovies = clipManager.countClips(actorId);
         long nbAllMovies = clipManager.countAllClips();
-
 
         // Create the JSON to send to the datatable
         Gson gson = new Gson();

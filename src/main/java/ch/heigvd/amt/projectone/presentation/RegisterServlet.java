@@ -10,30 +10,47 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Class representing a servlet used to register a new user.
+ * @author Guillaume Vetter & Jael Dubey
+ */
 @WebServlet(name = "RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends javax.servlet.http.HttpServlet {
 
     @EJB
     private ActorManagerLocal actorManager;
 
+    /**
+     * Method called on a GET request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/pages/register.jsp").forward(req, resp);
     }
 
+    /**
+     * Methos called on a POST request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String fullName = req.getParameter("fullName");
         String password = req.getParameter("password");
         String passwordRetyped = req.getParameter("passwordRetyped");
 
+        //We check if both password are equals, creating the user in that case and displaying an error otherwise
         if(password.equals(passwordRetyped)) {
-            // TODO Problème de concurrence ?
             long newId = actorManager.findMaxId()+1;
             Actor actor = new Actor(newId, fullName, password);
 
             actorManager.createActor(fullName, password);
-
             req.getSession().setAttribute("login", actor.getIdActor());
             resp.sendRedirect(req.getContextPath() + "/");
         } else {

@@ -11,17 +11,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Class used to represent a servlet used to update a character
+ * @author Guillaume Vetter & Jael Dubey
+ */
 @WebServlet(name = "UpdateCharacterServlet", urlPatterns = "/updateCharacter")
 public class UpdateCharacterServlet extends javax.servlet.http.HttpServlet {
 
     @EJB
     private CharacterManagerLocal CharacterManager;
 
+    /**
+     * Method called on a GET request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/pages/updateCharacter.jsp").forward(req, resp);
     }
 
+    /**
+     * Method called on a POST request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String newCharacter = req.getParameter("newCharacter");

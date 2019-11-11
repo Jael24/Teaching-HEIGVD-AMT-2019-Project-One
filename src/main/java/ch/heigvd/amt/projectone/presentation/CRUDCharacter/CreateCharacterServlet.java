@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Class representing a servlet used to create a character
+ * @author Guillaume Vetter & Jael Dubey
+ */
 @WebServlet(name = "CreateCharacterServlet", urlPatterns = "/createCharacter")
 public class CreateCharacterServlet extends javax.servlet.http.HttpServlet {
 
@@ -21,11 +25,25 @@ public class CreateCharacterServlet extends javax.servlet.http.HttpServlet {
     @EJB
     private ClipManagerLocal clipManager;
 
+    /**
+     * Method called on a GET request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/pages/createCharacter.jsp").forward(req, resp);
     }
 
+    /**
+     * Method called on a POST request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idMovie = req.getParameter("idMovie");
@@ -47,8 +65,5 @@ public class CreateCharacterServlet extends javax.servlet.http.HttpServlet {
             RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/pages/createCharacter.jsp");
             rd.forward(req, resp);
         }
-
-
-
     }
 }

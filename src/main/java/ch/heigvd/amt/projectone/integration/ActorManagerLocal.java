@@ -5,6 +5,10 @@ import ch.heigvd.amt.projectone.model.Actor;
 import javax.ejb.Local;
 import java.util.List;
 
+/**
+ * Interface of the Actor's DAO
+ * @author Guillaume Vetter & Jael Dubey
+ */
 @Local
 public interface ActorManagerLocal {
     List<Actor> findAllActors();
