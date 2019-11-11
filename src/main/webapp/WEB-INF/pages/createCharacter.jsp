@@ -166,6 +166,14 @@
               <!-- form start -->
               <form role="form" method="post">
                 <div class="card-body">
+                  <span style="color:red">
+                  <%
+                    if(request.getAttribute("errorMessage") != null)
+                    {
+                      out.println(request.getAttribute("errorMessage"));
+                    }
+                  %>
+                  </span>
                   <div class="form-group">
                     <label for="idMovie">ID du film</label>
                     <input type="text" class="form-control" name="idMovie" id="idMovie" placeholder="Entrer l'id du film">

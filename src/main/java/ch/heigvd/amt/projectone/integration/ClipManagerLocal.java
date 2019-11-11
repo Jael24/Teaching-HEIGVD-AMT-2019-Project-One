@@ -15,6 +15,7 @@ public interface ClipManagerLocal {
     List<Movie> findClipsWhereActorHasPlayed(long actorId, int start, long length);
     Movie findClipById(long search);
     long findMaxId();
+    boolean containsMovieId(long idActor, long idMovie);
     List<Movie> findLotsClips();
     long countClips(long idActor);
     long countAllClips();

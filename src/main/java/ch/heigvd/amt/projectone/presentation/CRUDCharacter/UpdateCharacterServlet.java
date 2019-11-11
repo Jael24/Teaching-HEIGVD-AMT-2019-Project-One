@@ -4,6 +4,7 @@ import ch.heigvd.amt.projectone.integration.CharacterManagerLocal;
 import ch.heigvd.amt.projectone.integration.CharacterManagerLocal;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +27,18 @@ public class UpdateCharacterServlet extends javax.servlet.http.HttpServlet {
         String newCharacter = req.getParameter("newCharacter");
         long idCharacterToUpdate = Long.parseLong(req.getParameter("idCharacterToUpdate"));
 
-        CharacterManager.updateCharacter(idCharacterToUpdate, newCharacter);
+        long actorId = CharacterManager.getActorIdByCharacter(idCharacterToUpdate);
+        String errorMessage;
 
-        resp.sendRedirect(req.getContextPath() + "/characters");
+        if(actorId != Long.parseLong(req.getSession().getAttribute("login").toString())){
+            errorMessage = "ID incorrecte";
+            req.setAttribute("errorMessage", errorMessage);
+            RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/pages/updateCharacter.jsp");
+            rd.forward(req, resp);
+        } else {
+            CharacterManager.updateCharacter(idCharacterToUpdate, newCharacter);
+
+            resp.sendRedirect(req.getContextPath() + "/characters");
+        }
     }
 }

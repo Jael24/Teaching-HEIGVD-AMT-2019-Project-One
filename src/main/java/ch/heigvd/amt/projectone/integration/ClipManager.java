@@ -131,6 +131,15 @@ public class ClipManager implements ClipManagerLocal{
     }
 
     @Override
+    public boolean containsMovieId(long idActor, long idMovie) {
+        List<Movie> movieList = findClipsWhereActorHasPlayed(idActor, 0, countAllClips());
+        for (Movie movie : movieList) {
+            if (movie.getIdMovie() == idMovie) {
+                return true;
+            }
+        }
+        return false;
+    }
     public long countClips(long idActor) {
         long returnValue = 0;
         try {
