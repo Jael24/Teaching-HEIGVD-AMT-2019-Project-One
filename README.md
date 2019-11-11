@@ -21,3 +21,8 @@ This application has been created for the course of AMT in 2019. This multi-tier
 ## Other documentation
 
 [Functionalities](/doc/Functionalities.md)
+[Implementation](/doc/Implementation.md)
+[Testing](/doc/Testing.md)
+[Performance](/doc/Performance.md)
+[Known Bugs](/doc/KnownBug.md)
+
