@@ -138,9 +138,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <button onclick="location.href = '/project-one-1.0-SNAPSHOT/createMovie';" type="submit" class="btn btn-secondary m-auto">Ajouter un film</button>
-            <button onclick="location.href = '/project-one-1.0-SNAPSHOT/deleteMovie';" type="submit" class="btn btn-secondary m-auto">Supprimer un film</button>
-            <button onclick="location.href = '/project-one-1.0-SNAPSHOT/updateMovie';" type="submit" class="btn btn-secondary m-auto">Modifier un film</button>
+            <button onclick="location.href = '<%=request.getContextPath()%>/createMovie';" type="submit" class="btn btn-secondary m-auto">Ajouter un film</button>
+            <button onclick="location.href = '<%=request.getContextPath()%>/deleteMovie';" type="submit" class="btn btn-secondary m-auto">Supprimer un film</button>
+            <button onclick="location.href = '<%=request.getContextPath()%>/updateMovie';" type="submit" class="btn btn-secondary m-auto">Modifier un film</button>
             <h1 class="mt-3">Liste des films</h1>
           </div>
           <div class="col-sm-6">
