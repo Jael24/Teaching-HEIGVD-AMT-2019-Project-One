@@ -3,3 +3,7 @@
 create-jdbc-connection-pool --restype javax.sql.DataSource --datasourceclassname com.mysql.cj.jdbc.MysqlDataSource --property 'user=root:password=root:url=jdbc\:mysql\://db\:3306/cinema:useSSL=false' cinema_pool
 
 create-jdbc-resource --connectionpoolid cinema_pool jdbc/cinema
+
+start-domain domain1
+
+deploy /home/AMTProjectOne.war

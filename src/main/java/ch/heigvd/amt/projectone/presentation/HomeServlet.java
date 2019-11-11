@@ -44,6 +44,7 @@ public class HomeServlet  extends javax.servlet.http.HttpServlet {
         long nbMovies = clipManager.countClips(actorId);
         long nbAllMovies = clipManager.countAllClips();
 
+
         // Create the JSON to send to the datatable
         Gson gson = new Gson();
         HashMap response = new HashMap<>();
