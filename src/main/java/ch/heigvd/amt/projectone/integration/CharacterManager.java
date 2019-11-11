@@ -50,11 +50,11 @@ public class CharacterManager implements CharacterManagerLocal{
 
 
     @Override
-    public List<Character> findCharWhereActorHasPlayed(long actorId) {
+    public List<Character> findCharWhereActorHasPlayed(long actorId, long start, long length) {
         List<Character> characters = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `character` INNER JOIN `movie` ON `character`.`idMovie` = `movie`.`idMovie` INNER JOIN `actor` ON `character`.`idActor` = `actor`.`idActor` WHERE `character`.`idActor` = " + actorId + ";");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `character` INNER JOIN `movie` ON `character`.`idMovie` = `movie`.`idMovie` INNER JOIN `actor` ON `character`.`idActor` = `actor`.`idActor` WHERE `character`.`idActor` = " + actorId + " LIMIT " + start + "," + length +";");
             readResult(characters, ps);
             connection.close();
         } catch (SQLException e) {
@@ -126,6 +126,38 @@ public class CharacterManager implements CharacterManagerLocal{
             ResultSet result = ps.executeQuery();
             result.next();
             returnValue = result.getLong("idActor");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
+    }
+
+    @Override
+    public long countCharacters(long idActor) {
+        long returnValue = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) AS countChars FROM `character` WHERE idActor = " + idActor + ";");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            returnValue = result.getLong("countChars");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
+    }
+
+    @Override
+    public long countAllCharacters() {
+        long returnValue = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) AS countChars FROM `character`");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            returnValue = result.getLong("countChars");
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

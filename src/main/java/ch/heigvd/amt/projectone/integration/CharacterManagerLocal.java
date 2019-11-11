@@ -12,7 +12,9 @@ public interface CharacterManagerLocal {
     void updateCharacter(long idCharacter, String newName);
     void deleteCharacter(long idChar);
     List<Character> findCharacter(String search);
-    List<Character> findCharWhereActorHasPlayed(long actorId);
     long getActorIdByCharacter(long idChar);
+    List<Character> findCharWhereActorHasPlayed(long actorId, long start, long length);
     long findMaxId();
+    long countCharacters(long idActor);
+    long countAllCharacters();
 }

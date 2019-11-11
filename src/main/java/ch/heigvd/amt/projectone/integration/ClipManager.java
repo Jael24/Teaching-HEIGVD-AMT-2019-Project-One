@@ -32,11 +32,11 @@ public class ClipManager implements ClipManagerLocal{
     }
 
     @Override
-    public List<Movie> findClipsWhereActorHasPlayed(long actorId) {
+    public List<Movie> findClipsWhereActorHasPlayed(long actorId, int start, long length) {
         List<Movie> movies = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `movie` INNER JOIN `character` ON `movie`.idMovie = `character`.idMovie WHERE `character`.idActor = " + actorId +";");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM `movie` INNER JOIN `character` ON `movie`.idMovie = `character`.idMovie WHERE `character`.idActor = " + actorId +" LIMIT " + start + "," + length + ";");
             readResult(movies, ps);
             connection.close();
         } catch (SQLException e) {
@@ -128,6 +128,52 @@ public class ClipManager implements ClipManagerLocal{
             e.printStackTrace();
         }
         return returnValue;
+    }
+
+    @Override
+    public long countClips(long idActor) {
+        long returnValue = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) AS countClips FROM movie INNER JOIN `character` ON `movie`.idMovie = `character`.idMovie WHERE `character`.idActor = " + idActor + ";");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            returnValue = result.getLong("countClips");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
+    }
+
+    @Override
+    public long countAllClips() {
+        long returnValue = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) AS countClips FROM movie");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            returnValue = result.getLong("countClips");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
+    }
+
+    @Override
+    public List<Movie> findLotsClips() {
+        List<Movie> movies = new ArrayList<>();
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM movie LIMIT 100000;");
+            readResult(movies, ps);
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
     }
 
     private void readResult(List<Movie> movies, PreparedStatement ps) throws SQLException {
