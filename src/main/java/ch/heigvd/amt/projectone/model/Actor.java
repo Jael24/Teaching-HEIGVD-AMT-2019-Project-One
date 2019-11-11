@@ -1,8 +1,10 @@
 package ch.heigvd.amt.projectone.model;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class Actor {
     private long idActor;
     private String fullName;
