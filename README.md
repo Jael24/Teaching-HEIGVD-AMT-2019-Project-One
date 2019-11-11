@@ -17,3 +17,7 @@ This application has been created for the course of AMT in 2019. This multi-tier
 
 - Use a known actor ID or register to be connected to the application. For testing purpose, all password are set to `password` (but you can create an account using whatever password you want).
 - When the credentials are correct, you can access the home page.
+
+## Other documentation
+
+[/doc/Functionalities.md](Functionalities)
