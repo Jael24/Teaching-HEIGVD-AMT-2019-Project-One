@@ -28,20 +28,39 @@ public class ClipManagerTest {
     @EJB
     ClipManagerLocal clipManager;
 
-    /*
-    @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "test.jar")
-                .addPackages(true, "ch.heigvd");
-    }*/
-
-
     @Test
     @Transactional(TransactionMode.ROLLBACK)
-    public void itShouldBePossibleToCreateAMovie() throws DuplicateKeyException, SQLException {
+    public void itShouldBePossibleToCreateAMovie() {
         Movie titanic = new Movie(1, "Titanic");
-        clipManager.createClip(titanic.getTitle());
-        assertEquals(1,1);
+        Movie m = clipManager.createClip(titanic.getTitle());
+        Movie movie = clipManager.findClipById(m.getIdMovie());
+        assertEquals(titanic.getTitle(), movie.getTitle());
     }
 
+    @Test
+    public void itShouldBePossibleToDeleteAMovie() {
+        Movie cheerleader = null;
+        Movie movie = clipManager.createClip("#1 Cheerleader Camp");
+
+        assertNotNull(movie);
+
+        clipManager.deleteClip(movie.getIdMovie());
+        cheerleader = clipManager.findClipById(movie.getIdMovie());
+
+        assertNull(cheerleader);
+    }
+
+    @Test
+    public void itShouldBePossibleToUpdateAMovie() {
+        Movie cheerleader = Movie.builder().title("error").build();
+        Movie m = clipManager.createClip(cheerleader.getTitle());
+
+        assertEquals(m.getTitle(), cheerleader.getTitle());
+
+        clipManager.updateClip(m.getIdMovie(), "#1 Cheerleader Camp");
+        cheerleader = clipManager.findClipById(m.getIdMovie());
+
+        assertEquals("#1 Cheerleader Camp", cheerleader.getTitle());
+
+    }
 }

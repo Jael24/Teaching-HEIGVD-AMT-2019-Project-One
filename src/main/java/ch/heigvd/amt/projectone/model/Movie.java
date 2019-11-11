@@ -1,8 +1,12 @@
 package ch.heigvd.amt.projectone.model;
 
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
+@Builder
+@EqualsAndHashCode
 public class Movie {
     private long idMovie;
     private String title;
