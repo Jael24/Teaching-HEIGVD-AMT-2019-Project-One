@@ -166,6 +166,14 @@
               <!-- form start -->
               <form role="form" method="post">
                 <div class="card-body">
+                  <span style="color:red">
+                  <%
+                    if(request.getAttribute("errorMessage") != null)
+                    {
+                      out.println(request.getAttribute("errorMessage"));
+                    }
+                  %>
+                  </span>
                   <div class="form-group">
                     <label for="idChar">ID du personnage à supprimer</label>
                     <input type="text" class="form-control" name="idCharToDelete" id="idChar" placeholder="Entrer l'id du personnage">

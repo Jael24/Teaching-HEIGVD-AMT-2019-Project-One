@@ -5,6 +5,7 @@ import ch.heigvd.amt.projectone.integration.ClipManagerLocal;
 import ch.heigvd.amt.projectone.model.Movie;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,13 +30,25 @@ public class CreateCharacterServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String idMovie = req.getParameter("idMovie");
         long idMovieLong = Long.parseLong(idMovie);
-        String character = req.getParameter("character");
+        Movie clip = clipManager.findClipById(idMovieLong);
+        String errorMessage;
+        String character;
+        if(clip != null) {
+            character = req.getParameter("character");
+            long idActor = Long.parseLong(req.getSession().getAttribute("login").toString());
 
-        long idActor = Long.parseLong(req.getSession().getAttribute("login").toString());
+            Movie movie = clipManager.findClipById(idMovieLong);
+            characterManager.createCharacter(character, idActor, movie.getIdMovie());
 
-        Movie movie = clipManager.findClipById(idMovieLong);
-        characterManager.createCharacter(character, idActor, movie.getIdMovie());
+            resp.sendRedirect(req.getContextPath() + "/characters");
+        } else {
+            errorMessage = "Ce film n'existe pas.";
+            req.setAttribute("errorMessage", errorMessage);
+            RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/pages/createCharacter.jsp");
+            rd.forward(req, resp);
+        }
 
-        resp.sendRedirect(req.getContextPath() + "/characters");
+
+
     }
 }

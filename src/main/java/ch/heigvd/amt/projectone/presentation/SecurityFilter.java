@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"", "/characters", "/actor", "/logout", "/register", "/createMovie"})
+@WebFilter(urlPatterns = {"", "/characters", "/actor", "/logout", "/createMovie"})
 public class SecurityFilter implements Filter {
 
     @Override

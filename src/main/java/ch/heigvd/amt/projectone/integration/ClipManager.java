@@ -130,6 +130,17 @@ public class ClipManager implements ClipManagerLocal{
         return returnValue;
     }
 
+    @Override
+    public boolean containsMovieId(long idActor, long idMovie){
+        List<Movie> movieList = findClipsWhereActorHasPlayed(idActor);
+        for(Movie movie:movieList) {
+            if(movie.getIdMovie() == idMovie){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void readResult(List<Movie> movies, PreparedStatement ps) throws SQLException {
         ResultSet result = ps.executeQuery();
         while (result.next()){

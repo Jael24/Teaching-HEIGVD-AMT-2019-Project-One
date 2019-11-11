@@ -166,6 +166,14 @@
               <!-- form start -->
               <form role="form" method="post">
                 <div class="card-body">
+                  <span style="color:red">
+                  <%
+                    if(request.getAttribute("errorMessage") != null)
+                    {
+                      out.println(request.getAttribute("errorMessage"));
+                    }
+                  %>
+                  </span>
                   <div class="form-group">
                     <label for="idCharacter">ID du film du personnage à modifier</label>
                     <input type="text" class="form-control" name="idCharacterToUpdate" id="idCharacter" placeholder="Entrer l'id du personnage à modifier">

@@ -15,4 +15,5 @@ public interface ClipManagerLocal {
     List<Movie> findClipsWhereActorHasPlayed(long actorId);
     Movie findClipById(long search);
     long findMaxId();
+    boolean containsMovieId(long idActor, long idMovie);
 }

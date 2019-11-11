@@ -166,6 +166,14 @@
               <!-- form start -->
               <form role="form" method="post">
                 <div class="card-body">
+                  <span style="color:red">
+                  <%
+                    if(request.getAttribute("errorMessage") != null)
+                    {
+                      out.println(request.getAttribute("errorMessage"));
+                    }
+                  %>
+                  </span>
                   <div class="form-group">
                     <label for="exampleInputEmail1">ID du film à supprimer</label>
                     <input type="text" class="form-control" name="idMovieToDelete" id="exampleInputEmail1" placeholder="Entrer l'id">
