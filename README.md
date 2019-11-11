@@ -17,11 +17,3 @@ This application has been created for the course of AMT in 2019. This multi-tier
 
 - Use a known actor ID or register to be connected to the application. For testing purpose, all password are set to `password` (but you can create an account using whatever password you want).
 - When the credentials are correct, you can access the home page.
-
-## Functionalities
-
-- When you are connected, several functionalities are available:
- - The user can see his informations, can edit his name and password, or even delete his account.
- - The user can see, edit and delete every film in which he played.
- - The user can see, edit and delete every character that he played.
- - The user can create a new film or a new character.
