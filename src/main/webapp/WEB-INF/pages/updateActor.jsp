@@ -101,7 +101,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="characters" class="nav-link active">
+            <a href="characters" class="nav-link">
               <i class="nav-icon fas fa-user-astronaut"></i>
               <p>
                 Personnages
@@ -110,7 +110,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Acteur
@@ -143,7 +143,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-              <li class="breadcrumb-item active">Suppression de personnage</li>
+              <li class="breadcrumb-item active">Modification de l'utilisateur</li>
             </ol>
           </div>
         </div>
@@ -160,21 +160,21 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Suppression de personnage</h3>
+                <h3 class="card-title">Modification de l'utilisateur</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form role="form" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="idChar">ID du personnage à supprimer</label>
-                    <input type="text" class="form-control" name="idCharToDelete" id="idChar" placeholder="Entrer l'id du personnage">
+                    <label for="newNameID">Modifier le nom:</label>
+                    <input type="text" class="form-control" name="newName" id="newNameID" placeholder="Entrer le nouveau nom">
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Supprimer</button>
+                  <button type="submit" class="btn btn-primary">Modifier</button>
                 </div>
               </form>
             </div>

@@ -15,4 +15,20 @@ public class Character {
             this.movie = movie;
             this.charName = charName;
     }
+
+    public long getIdChar() {
+        return idChar;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public String getCharName() {
+        return charName;
+    }
 }

@@ -138,12 +138,14 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Liste des personnages</h1>
+                        <button onclick="location.href = '/project-one-1.0-SNAPSHOT/deleteActor';" type="submit" class="btn btn-secondary m-auto">Supprimer</button>
+                        <button onclick="location.href = '/project-one-1.0-SNAPSHOT/updateActor';" type="submit" class="btn btn-secondary m-auto">Modifier</button>
+                        <h1 class="mt-3">Utilisateur</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            <li class="breadcrumb-item active">Liste des personnages</li>
+                            <li class="breadcrumb-item active">Utilisateur</li>
                         </ol>
                     </div>
                 </div>
@@ -179,11 +181,6 @@
             <!-- /.container-fluid -->
         </section>
     </div>
-    <form role="form" method="post">
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Supprimer le compte</button>
-        </div>
-    </form>
     <!-- /.content -->
     <!-- /.content-wrapper -->
     <footer class="main-footer">

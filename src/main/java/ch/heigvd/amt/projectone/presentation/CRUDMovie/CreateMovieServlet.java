@@ -1,9 +1,7 @@
 package ch.heigvd.amt.projectone.presentation.CRUDMovie;
 
-import ch.heigvd.amt.projectone.integration.ActorManagerLocal;
 import ch.heigvd.amt.projectone.integration.CharacterManagerLocal;
 import ch.heigvd.amt.projectone.integration.ClipManagerLocal;
-import ch.heigvd.amt.projectone.model.Actor;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;

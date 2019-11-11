@@ -64,10 +64,10 @@ public class CharacterManager implements CharacterManagerLocal{
     }
 
     @Override
-    public void updateCharacter(long idActor, long idMovie, String newName){
+    public void updateCharacter(long idCharacter, String newName){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("UPDATE `character` SET charName = '" + newName + "' WHERE idActor =" + idActor + "AND idMovie =" + idMovie + ";");
+            PreparedStatement ps = connection.prepareStatement("UPDATE `character` SET charName = '" + newName + "' WHERE idChar =" + idCharacter + ";");
             ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
@@ -76,10 +76,10 @@ public class CharacterManager implements CharacterManagerLocal{
     }
 
     @Override
-    public void deleteCharacter(long idActor, long idMovie){
+    public void deleteCharacter(long idChar){
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM `character` WHERE idActor =" + idActor + "AND idMovie =" + idMovie + ";");
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM `character` WHERE idChar =" + idChar + ";");
             ps.executeUpdate();
             connection.close();
         } catch (SQLException e) {
@@ -110,6 +110,22 @@ public class CharacterManager implements CharacterManagerLocal{
             ResultSet result = ps.executeQuery();
             result.next();
             returnValue = result.getLong("maxId");
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
+    }
+
+    @Override
+    public long getActorIdByCharacter(long idChar){
+        long returnValue = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement ps = connection.prepareStatement("SELECT idActor FROM `character` WHERE idChar=" + idChar + ";");
+            ResultSet result = ps.executeQuery();
+            result.next();
+            returnValue = result.getLong("idActor");
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();

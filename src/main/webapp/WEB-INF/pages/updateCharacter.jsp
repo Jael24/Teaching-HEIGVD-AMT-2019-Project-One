@@ -92,7 +92,7 @@
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/project-one-1.0-SNAPSHOT/" class="nav-link active">
+            <a href="/project-one-1.0-SNAPSHOT/" class="nav-link">
               <i class="nav-icon fas fa-film"></i>
               <p>
                 Films
@@ -101,7 +101,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="characters" class="nav-link ">
+            <a href="characters" class="nav-link active">
               <i class="nav-icon fas fa-user-astronaut"></i>
               <p>
                 Personnages
@@ -167,12 +167,8 @@
               <form role="form" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="idActor">ID de l'acteur du personnage à modifier</label>
-                    <input type="text" class="form-control" name="idActorToUpdate" id="idActor" placeholder="Entrer l'id de l'acteur du personnage à modifier">
-                  </div>
-                  <div class="form-group">
-                    <label for="idMovie">ID du film du personnage à modifier</label>
-                    <input type="text" class="form-control" name="idMovieToUpdate" id="idMovie" placeholder="Entrer l'id du film du personnage à modifier">
+                    <label for="idCharacter">ID du film du personnage à modifier</label>
+                    <input type="text" class="form-control" name="idCharacterToUpdate" id="idCharacter" placeholder="Entrer l'id du personnage à modifier">
                   </div>
                   <div class="form-group">
                     <label for="newCharacter_ID">Nouveau nom du personnage</label>

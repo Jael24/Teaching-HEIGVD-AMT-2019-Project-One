@@ -27,14 +27,15 @@ public class CreateCharacterServlet extends javax.servlet.http.HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String idMovie = req.getParameter("idMovie");
+        long idMovieLong = Long.parseLong(idMovie);
         String character = req.getParameter("character");
-        long idMovie = Long.parseLong(req.getParameter("idMovie"));
 
         long idActor = Long.parseLong(req.getSession().getAttribute("login").toString());
 
-        Movie movie = clipManager.findClipById(idMovie);
+        Movie movie = clipManager.findClipById(idMovieLong);
         characterManager.createCharacter(character, idActor, movie.getIdMovie());
 
-        resp.sendRedirect(req.getContextPath() + "/");
+        resp.sendRedirect(req.getContextPath() + "/characters");
     }
 }

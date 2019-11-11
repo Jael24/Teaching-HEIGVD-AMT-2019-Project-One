@@ -23,11 +23,13 @@ public class DeleteCharacterServlet extends javax.servlet.http.HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        long idActor = Long.parseLong(req.getParameter("idActorToDelete"));
-        long idMovie = Long.parseLong(req.getParameter("idMovieToDelete"));
+        long idChar = Long.parseLong(req.getParameter("idCharToDelete"));
+        long idActor = Long.parseLong(req.getSession().getAttribute("login").toString());
+        if(characterManager.getActorIdByCharacter(idChar) == idActor){
+            characterManager.deleteCharacter(idChar);
+        } else {
 
-        characterManager.deleteCharacter(idActor, idMovie);
-
-        resp.sendRedirect(req.getContextPath() + "/");
+        }
+        resp.sendRedirect(req.getContextPath() + "/characters");
     }
 }

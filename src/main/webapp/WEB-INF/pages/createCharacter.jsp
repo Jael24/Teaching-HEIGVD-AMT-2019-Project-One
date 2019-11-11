@@ -92,7 +92,7 @@
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/project-one-1.0-SNAPSHOT/" class="nav-link active">
+            <a href="/project-one-1.0-SNAPSHOT/" class="nav-link">
               <i class="nav-icon fas fa-film"></i>
               <p>
                 Films
@@ -101,7 +101,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="characters" class="nav-link ">
+            <a href="characters" class="nav-link active">
               <i class="nav-icon fas fa-user-astronaut"></i>
               <p>
                 Personnages
@@ -168,12 +168,11 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="idMovie">ID du film</label>
-                    <input type="text" class="form-control" name="title" id="idMovie" placeholder="Entrer l'id du film">
+                    <input type="text" class="form-control" name="idMovie" id="idMovie" placeholder="Entrer l'id du film">
                   </div>
                   <div class="form-group">
-                    <label for="characterPlayed">Personnage joué</label>
-                    <input type="text" class="form-control" name="character" id="characterPlayed" placeholder="Entrer le personnage">
-
+                    <label for="characterId">Personnage joué</label>
+                    <input type="text" class="form-control" name="character" id="characterId" placeholder="Entrer le personnage">
                   </div>
                 </div>
                 <!-- /.card-body -->

@@ -24,11 +24,10 @@ public class UpdateCharacterServlet extends javax.servlet.http.HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String newCharacter = req.getParameter("newCharacter");
-        long idActorToUpdate = Long.parseLong(req.getParameter("idActorToUpdate"));
-        long idMovieToUpdate = Long.parseLong(req.getParameter("idMovieToUpdate"));
+        long idCharacterToUpdate = Long.parseLong(req.getParameter("idCharacterToUpdate"));
 
-        CharacterManager.updateCharacter(idActorToUpdate, idMovieToUpdate, newCharacter);
+        CharacterManager.updateCharacter(idCharacterToUpdate, newCharacter);
 
-        resp.sendRedirect(req.getContextPath() + "/");
+        resp.sendRedirect(req.getContextPath() + "/characters");
     }
 }

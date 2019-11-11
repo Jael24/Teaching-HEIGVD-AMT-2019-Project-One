@@ -167,8 +167,8 @@
               <form role="form" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Titre</label>
-                    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Entrer le titre">
+                    <label for="title_id">Titre</label>
+                    <input type="text" class="form-control" name="title" id="title_id" placeholder="Entrer le titre">
                   </div>
                   <div class="form-group">
                     <label for="characterPlayed">Personnage joué</label>

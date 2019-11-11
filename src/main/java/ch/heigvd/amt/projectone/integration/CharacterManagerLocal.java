@@ -9,9 +9,10 @@ import java.util.List;
 public interface CharacterManagerLocal {
     public List<Character> findAllCharacters();
     long createCharacter(String charName, long idActor, long idMovie);
-    void updateCharacter(long idActor, long idMovie, String newName);
-    void deleteCharacter(long idActor, long idMovie);
+    void updateCharacter(long idCharacter, String newName);
+    void deleteCharacter(long idChar);
     List<Character> findCharacter(String search);
     List<Character> findCharWhereActorHasPlayed(long actorId);
+    long getActorIdByCharacter(long idChar);
     long findMaxId();
 }
