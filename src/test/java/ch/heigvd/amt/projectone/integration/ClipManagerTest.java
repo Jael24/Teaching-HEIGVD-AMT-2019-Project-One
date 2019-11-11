@@ -20,6 +20,7 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.*;
 
+
 @RunWith(Arquillian.class)
 @MavenBuild
 @DeploymentParameters(testable = true)

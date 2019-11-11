@@ -14,11 +14,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class used to represent character's DAOs
+ * @author Guillaume Vetter & Jael Dubey
+ */
 @Stateless
 public class CharacterManager implements CharacterManagerLocal{
     @Resource(lookup = "jdbc/cinema")
     private DataSource dataSource;
 
+    /**
+     * Method used to find every character that the current user has played.
+     * @return the list of every character that the current user has played.
+     */
     @Override
     public List<Character> findAllCharacters(){
         List<Character> chars = new ArrayList<>();
@@ -33,6 +41,13 @@ public class CharacterManager implements CharacterManagerLocal{
         return chars;
     }
 
+    /**
+     * Method used to create a character
+     * @param charName the name of the character
+     * @param idActor the id of the actor
+     * @param idMovie the id of the movie
+     * @return the id of the new character
+     */
     @Override
     public long createCharacter(String charName, long idActor, long idMovie){
         long newId = 0;
@@ -48,7 +63,13 @@ public class CharacterManager implements CharacterManagerLocal{
         return newId;
     }
 
-
+    /**
+     * Method used to find every character played by a given actor
+     * @param actorId the actor that we want to retrieve the characters
+     * @param start the starting id
+     * @param length the length of the result list
+     * @return a list of character containing the characters played by the actor, starting at "start" and of length "length"
+     */
     @Override
     public List<Character> findCharWhereActorHasPlayed(long actorId, long start, long length) {
         List<Character> characters = new ArrayList<>();
@@ -63,6 +84,11 @@ public class CharacterManager implements CharacterManagerLocal{
         return characters;
     }
 
+    /**
+     * Method used to change the information of a character
+     * @param idCharacter the id of the character we want to modify
+     * @param newName the new name of the character
+     */
     @Override
     public void updateCharacter(long idCharacter, String newName){
         try {
@@ -75,6 +101,10 @@ public class CharacterManager implements CharacterManagerLocal{
         }
     }
 
+    /**
+     * Method used to delete a given character
+     * @param idChar the character ID of the character we want to delete
+     */
     @Override
     public void deleteCharacter(long idChar){
         try {
@@ -87,6 +117,11 @@ public class CharacterManager implements CharacterManagerLocal{
         }
     }
 
+    /**
+     * Method used to find a character using a search string
+     * @param search the search string
+     * @return the list of all characters retrieved.
+     */
     @Override
     public List<Character> findCharacter(String search){
         List<Character> chars = new ArrayList<>();
@@ -101,6 +136,10 @@ public class CharacterManager implements CharacterManagerLocal{
         return chars;
     }
 
+    /**
+     * Method used to find the max ID of the character table.
+     * @return the max ID of the character table
+     */
     @Override
     public long findMaxId(){
         long returnValue = 0;
@@ -117,6 +156,11 @@ public class CharacterManager implements CharacterManagerLocal{
         return returnValue;
     }
 
+    /**
+     * Method used to find an Actor using it's character ID
+     * @param idChar the id of the character we want to retrieve
+     * @return the Actor that played the given character
+     */
     @Override
     public long getActorIdByCharacter(long idChar){
         long returnValue = 0;
@@ -133,6 +177,11 @@ public class CharacterManager implements CharacterManagerLocal{
         return returnValue;
     }
 
+    /**
+     * Method used to count the number of character a given Actor has played
+     * @param idActor the given actor
+     * @return the number of character that the actor played.
+     */
     @Override
     public long countCharacters(long idActor) {
         long returnValue = 0;
@@ -149,6 +198,10 @@ public class CharacterManager implements CharacterManagerLocal{
         return returnValue;
     }
 
+    /**
+     * Method used to count all characters
+     * @return the total number of characters in the table
+     */
     @Override
     public long countAllCharacters() {
         long returnValue = 0;

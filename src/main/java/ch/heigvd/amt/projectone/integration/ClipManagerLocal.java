@@ -5,6 +5,11 @@ import ch.heigvd.amt.projectone.model.Movie;
 import javax.ejb.Local;
 import java.util.List;
 
+/**
+ * Interface of the Clip's DAO
+ * @author Guillaume Vetter & Jael Dubey
+
+ */
 @Local
 public interface ClipManagerLocal {
     List<Movie> findAllClips();
