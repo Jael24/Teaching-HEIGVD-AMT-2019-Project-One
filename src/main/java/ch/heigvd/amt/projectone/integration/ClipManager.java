@@ -139,7 +139,7 @@ public class ClipManager implements ClipManagerLocal{
     /**
      * Method used to find a clip using an ID
      * @param search the ID of the clip we want to find
-     * @return the movie that has the given ID.
+     * @return the movie that has the given ID, null otherwise.
      */
     @Override
     public Movie findClipById(long search){
