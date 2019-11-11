@@ -12,8 +12,11 @@ public interface ClipManagerLocal {
     void updateClip(long idClip, String newName);
     void deleteClip(long idClip);
     List<Movie> findClip(String search);
-    List<Movie> findClipsWhereActorHasPlayed(long actorId);
+    List<Movie> findClipsWhereActorHasPlayed(long actorId, int start, long length);
     Movie findClipById(long search);
     long findMaxId();
     boolean containsMovieId(long idActor, long idMovie);
+    List<Movie> findLotsClips();
+    long countClips(long idActor);
+    long countAllClips();
 }

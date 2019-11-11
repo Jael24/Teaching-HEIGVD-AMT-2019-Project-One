@@ -69,7 +69,7 @@
               class="brand-image img-circle elevation-3"
               style="opacity: .8"
       />
-      <span class="brand-text font-weight-light">AMTProjectOne</span>
+      <span style="color: #9e9e9e" class="brand-text font-weight-light">AMTProjectOne</span>
     </a>
 
     <!-- Sidebar -->
@@ -245,6 +245,19 @@
     $(function () {
         $("#example1").DataTable();
         $('#example2').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '<%=request.getContextPath() + "/"%>',
+                type: 'POST'
+            },
+            columns: [{
+                data: "idMovie",
+                mData: "idMovie"
+            }, {
+                data: "title",
+                mData: "title"
+            }],
             "paging": true,
             "lengthChange": false,
             "searching": false,

@@ -4,14 +4,17 @@ import ch.heigvd.amt.projectone.integration.CharacterManagerLocal;
 import ch.heigvd.amt.projectone.integration.ClipManagerLocal;
 import ch.heigvd.amt.projectone.model.Character;
 import ch.heigvd.amt.projectone.model.Movie;
+import com.google.gson.Gson;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @WebServlet(name = "CharacterServlet", urlPatterns = "/characters")
@@ -24,13 +27,31 @@ public class CharacterServlet extends javax.servlet.http.HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
 
-        long actorId = Long.parseLong(req.getSession().getAttribute("login").toString());
-
-        List<Character> characters = characterManager.findCharWhereActorHasPlayed(actorId);
-
-
-        req.getSession().setAttribute("characters", characters);
         req.getRequestDispatcher("/WEB-INF/pages/characters.jsp").forward(req, resp);
 
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int start = Integer.parseInt(req.getParameter("start"));
+        int length = Integer.parseInt(req.getParameter("length"));
+        long actorId = Long.parseLong(req.getSession().getAttribute("login").toString());
+
+        List<Character> characters = characterManager.findCharWhereActorHasPlayed(actorId, start, length);
+        long nbChars = characterManager.countCharacters(actorId);
+        long nbAllChars = characterManager.countAllCharacters();
+
+        // Create the JSON to send to the datatable
+        Gson gson = new Gson();
+        HashMap response = new HashMap<>();
+        response.put("recordsTotal", nbAllChars);
+        response.put("recordsFiltered", nbChars);
+        response.put("data", characters);
+
+        // Send data as JSON to the datatable
+        resp.setContentType("application/json;charset=UTF-8");
+        ServletOutputStream out = resp.getOutputStream();
+        out.write(gson.toJson(response).getBytes());
+        out.flush();
     }
 }
