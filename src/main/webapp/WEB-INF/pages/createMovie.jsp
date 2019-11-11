@@ -92,7 +92,7 @@
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/project-one-1.0-SNAPSHOT/" class="nav-link active">
+            <a href="<%=request.getContextPath()%>/" class="nav-link active">
               <i class="nav-icon fas fa-film"></i>
               <p>
                 Films
