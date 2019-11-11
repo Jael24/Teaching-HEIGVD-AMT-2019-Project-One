@@ -17,20 +17,36 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Class used to represent a servlet used to display the characters played by the user
+ * @author Guillaume Vetter & Jael Dubey
+ */
 @WebServlet(name = "CharacterServlet", urlPatterns = "/characters")
 public class CharacterServlet extends javax.servlet.http.HttpServlet {
 
     @EJB
     private CharacterManagerLocal characterManager;
 
+    /**
+     * Method called on a GET request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
-
         req.getRequestDispatcher("/WEB-INF/pages/characters.jsp").forward(req, resp);
-
     }
 
+    /**
+     * Method called on a POST request on the servlet
+     * @param req the http request
+     * @param resp the http response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int start = Integer.parseInt(req.getParameter("start"));
